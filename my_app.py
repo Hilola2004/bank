@@ -3,7 +3,7 @@ import pandas as pd
 import pickle
 
 
-model = pickle.load(open('your_model.pkl', 'rb'))  # O'z model faylingizni yuklang
+model = pickle.load(open('model (1).pkl', 'rb')) 
 
 
 st.title("Mijozning Omonat Qo'yishi Haqida Bashorat")
