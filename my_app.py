@@ -3,9 +3,7 @@ import pandas as pd
 import pickle
 
 
-model_path = 'model.pkl'
-with open(model_path, 'rb') as file:
-    model = pickle.load(file)
+model = pickle.load(open('your_model.pkl', 'rb'))  # O'z model faylingizni yuklang
 
 
 st.title("Mijozning Omonat Qo'yishi Haqida Bashorat")
@@ -17,7 +15,7 @@ job = st.selectbox("Kasb:", ["admin.", "technician", "services", "management", "
 marital = st.selectbox("Turmush holati:", ["married", "single", "divorced"])
 education = st.selectbox("Ta'lim darajasi:", ["primary", "secondary", "tertiary", "unknown"])
 default = st.selectbox("Bankrotlik:", ["no", "yes"])
-balance = st.number_input("Hisob qoldig'i:")
+balance = st.number_input("Hisob qoldig'i:", min_value=-10000, max_value=100000)
 housing = st.selectbox("Uy-joy krediti:", ["no", "yes"])
 loan = st.selectbox("Kredit-qarz:", ["no", "yes"])
 contact = st.selectbox("Aloqa usuli:", ["unknown", "cellular", "telephone"])
@@ -40,4 +38,4 @@ input_df = pd.DataFrame(input_data, columns=[
 if st.button("Bashorat qilish"):
     prediction = model.predict(input_df)
     result = "Omonat qo'yishi mumkin" if prediction[0] == "yes" else "Omonat qo'yishi mumkin emas"
-    st.success(result)import streamlit
+    st.success(result)
